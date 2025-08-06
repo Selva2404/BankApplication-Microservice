@@ -1,13 +1,15 @@
 spring:
  application:
   name: "configserver"
- profiles:
-  active: "native"
+
  cloud:
   config:
    server:
-    native:
-     search-locations: "classpath:/config"
+    git:
+     uri: "https://github.com/Selva2404/config-all-service.git/"
+     username: "Selva2404"
+     password: "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"
+     clone-on-start: true
 
 management:
  endpoints:
@@ -16,4 +18,4 @@ management:
     include: "*"
 
 server:
-  port: 8000
+  port: "8000"

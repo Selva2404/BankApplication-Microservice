@@ -5,12 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a65850c-8177-4440-ae5f-0faa339c2ef6" name="Changes" comment="config for all service">
-      <change beforePath="$PROJECT_DIR$/cardservice/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cardservice/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cardservice/src/main/java/org/cardservice/DTO/CardsDtDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/cardservice/src/main/java/org/cardservice/DTO/CardsDtDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AccountService/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/AccountService/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LoanService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/LoanService/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LoanService/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/LoanService/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardservice/src/main/java/org/cardservice/CardServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/cardservice/src/main/java/org/cardservice/CardServiceApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cardservice/src/main/java/org/cardservice/controller/CardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cardservice/src/main/java/org/cardservice/controller/CardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cardservice/src/main/resources/application_prod.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cardservice/src/main/resources/application_qa.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cardservice/src/main/resources/schame.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardservice/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/cardservice/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/startservice/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/startservice/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,7 +135,7 @@
       <recent name="org.cardservice.DTO" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.LoanServiceApplication">
+  <component name="RunManager" selected="Spring Boot.CardServiceApplication">
     <configuration name="BankAppApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.bankapp.BankAppApplication" />
       <module name="AccountService" />
@@ -141,19 +143,6 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="org.bankapp.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CardServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.cardservice.CardServiceApplication" />
-      <module name="cardservice" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.cardservice.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -177,18 +166,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CardServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+    <configuration name="CardServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="cardservice" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="org.cardservice.CardServiceApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="LoanServiceApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
-      <module name="loanservice" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="org.loanService.LoanServiceApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.cardservice.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -218,7 +205,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.CardServiceApplication" />
+        <item itemvalue="Spring Boot.CardServiceApplication" />
         <item itemvalue="Spring Boot.StartserviceApplication" />
         <item itemvalue="Application.BankAppApplication" />
         <item itemvalue="JUnit.All in AccountService" />
@@ -254,7 +241,7 @@
       <workItem from="1754062064357" duration="6573000" />
       <workItem from="1754218022391" duration="6290000" />
       <workItem from="1754229976215" duration="12054000" />
-      <workItem from="1754361236867" duration="8461000" />
+      <workItem from="1754361236867" duration="17419000" />
     </task>
     <task id="LOCAL-00001" summary="config for all service">
       <option name="closed" value="true" />
@@ -288,7 +275,15 @@
       <option name="project" value="LOCAL" />
       <updated>1754411825118</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="config for all service">
+      <option name="closed" value="true" />
+      <created>1754411987755</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1754411987755</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
