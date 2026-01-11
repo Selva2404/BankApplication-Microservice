@@ -6,16 +6,26 @@ spring:
   config:
    server:
     git:
-     uri: "https://github.com/Selva2404/config-all-service.git/"
-     username: "Selva2404"
-     password: "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"
+     uri: "https://github.com/Selva2404/config-all-service.git"
      clone-on-start: true
+     default-label: "main"
+     timeout: 5
 
 management:
  endpoints:
   web:
    exposure:
     include: "*"
+ health:
+  readiness-state:
+   enabled: true
+  liveness-state:
+   enabled: true
+ endpoint:
+  health:
+   probes:
+    enabled: true
+
 
 server:
   port: "8000"

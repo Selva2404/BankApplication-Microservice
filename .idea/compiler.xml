@@ -7,8 +7,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="eurekaserver" />
+        <module name="bankgateway" />
         <module name="startservice" />
-        <module name="AccountService" />
+        <module name="message" />
+        <module name="account" />
       </profile>
       <profile name="Annotation profile for cardservice" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -32,9 +35,12 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="AccountService" options="-parameters" />
+      <module name="account" options="-parameters" />
+      <module name="bankgateway" options="-parameters" />
       <module name="cardservice" options="-parameters" />
+      <module name="eurekaserver" options="-parameters" />
       <module name="loanservice" options="-parameters" />
+      <module name="message" options="-parameters" />
       <module name="startservice" options="-parameters" />
     </option>
   </component>

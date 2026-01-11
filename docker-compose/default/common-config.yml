@@ -1,0 +1,43 @@
+services:
+ network-config:
+  networks:
+   - selva2404_network
+
+# microservice-db-config:
+#  extends:
+#   service: network-config
+#  image: "mysql"
+#  healthcheck:
+#   test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+#   interval: 10s
+#   retries: 5
+#   timeout: 10s
+#   start_period: 10s
+#  environment:
+#   MYSQL_ROOT_PASSWORD: "root"
+
+ microservice-common-config:
+  extends:
+   service: network-config
+  deploy:
+   resources:
+    limits:
+     memory: 1G
+    #environment:
+     # SPRING_RABBITMQ_HOST: "rabbit"
+
+ microservice-config:
+  extends:
+   service: microservice-common-config
+  environment:
+   SPRING_PROFILES_ACTIVE: default
+   SPRING_CONFIG_IMPORT: configserver:http://configserver:8000/
+
+ microservice-eureka-config:
+  extends:
+   service: microservice-config
+  environment:
+   EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: "http://eurekaserver:8500/eureka/"
+
+
+

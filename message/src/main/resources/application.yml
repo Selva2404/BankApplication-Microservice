@@ -1,0 +1,20 @@
+server:
+  port: 9090
+spring:
+  application:
+    name: "message"
+  cloud:
+    function:
+      definition: sendEmail|sendSMS
+    stream:
+      kafka:
+        binder:
+          brokers: localhost:9092
+      bindings:
+        sendEmailsendSMS-in-0:
+          destination: Send-message
+          group: sendEmailGroup
+        sendEmailsendSMS-out-0:
+          destination: receive-message
+
+

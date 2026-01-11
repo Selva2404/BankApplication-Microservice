@@ -2,23 +2,76 @@ spring:
   application:
     name: "loans"
   datasource:
+    url: jdbc:h2:mem:loansdb
     driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:loandb
-    username: sa
+    username: "sa"
     password: ""
+  config:
+   import: "configserver:http://localhost:8000"
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
   jpa:
     hibernate:
       ddl-auto: update
-    database-platform: org.hibernate.dialect.H2Dialect
-  config:
-    import: "configserver:http://localhost:8000/"
+    show-sql: true
+  sql:
+    init:
+      mode: always
   profiles:
     active: "qa"
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: "http://localhost:8500/eureka/"
+
 management:
   endpoints:
     web:
       exposure:
         include: "*"
+  health:
+    readiness-state:
+      enabled: true
+    liveness-state:
+      enabled: true
+  endpoint:
+    shutdown:
+      access: unrestricted
+    health:
+      probes:
+        enabled: true
+    info:
+      env:
+       enabled: true
 
 server:
   port: 8100
+
+info:
+  app:
+    name: "accounts"
+    description: "loan Application"
+    version: "1.0.0"
+
+logging:
+  level:
+    com:
+      loanService: DEBUG
+
+resilience4j.retry:
+  configs:
+    default:
+      max-attempts: 3
+      wait-duration: 3s
+      enableExponentialBackoff: true
+      exponentialBackoffMultiplier: 2
+  instances:
+    LOANS:
+      base-config: default

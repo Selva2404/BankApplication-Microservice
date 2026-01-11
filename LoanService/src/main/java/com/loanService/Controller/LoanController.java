@@ -6,6 +6,7 @@ import com.loanService.DTO.LoanDtDTO;
 import com.loanService.DTO.ResponseDTO;
 
 import com.loanService.service.impl.LoanServiceImpl;
+import io.github.resilience4j.retry.annotation.Retry;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -17,6 +18,7 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -33,6 +35,7 @@ public class LoanController {
 
 
     private final LoanDtDTO loanDtDTO;
+
     LoanServiceImpl loanServiceImpl;
 
 
@@ -47,7 +50,6 @@ public class LoanController {
     @PostMapping("/CreateLoan")
     public ResponseEntity<ResponseDTO> createLoan(@RequestParam @NotEmpty(message="mobile Number is null or empty") @Pattern(regexp="^[6-9]\\d{9,11}$") String mobileNumber) {
 
-       // log.debug("   loanDTO  =" + mobileNumber);
         loanServiceImpl.createLoan(mobileNumber);
         return ResponseEntity.ok().body(new ResponseDTO("201", "Successfully Created Loan"));
 
@@ -61,9 +63,9 @@ public class LoanController {
             description = "HTTP status fetch"
     )
     @GetMapping("/findLoan")
-    public ResponseEntity<LoanDTO> findLoan(@RequestParam @NotEmpty(message="mobile Number is null or empty") @Pattern(regexp="^[6-9]\\d{9,11}$") String mobileNumber) {
+    public ResponseEntity<LoanDTO> findLoan(@RequestHeader("Trace-ID") String tarceId,@RequestParam @NotEmpty(message="mobile Number is null or empty") @Pattern(regexp="^[6-9]\\d{9,11}$") String mobileNumber) {
        LoanDTO loanDTO=loanServiceImpl.findLoan(mobileNumber);
-
+        System.out.println(" loan controller {}"+tarceId);
         return ResponseEntity
                 .status(HttpStatus.OK)
                .body(loanDTO);
@@ -120,9 +122,17 @@ public class LoanController {
                     .body(new ResponseDTO("200", "details successfully deleted"));
     }
 
+    @Retry(name ="getDBDetails", fallbackMethod = "getDBDetailsfall")
     @GetMapping("/config-info")
     public ResponseEntity<LoanDtDTO> getDBDetails(){
+        System.out.println(loanDtDTO);
+        throw new RuntimeException();
+       // return ResponseEntity.status(HttpStatus.OK).body(loanDtDTO);
+    }
 
-        return ResponseEntity.status(HttpStatus.OK).body(loanDtDTO);
+
+    public ResponseEntity<String> getDBDetailsfall(Throwable t){
+        System.out.println("retry working");
+        return ResponseEntity.status(HttpStatus.OK).body("selva");
     }
 }

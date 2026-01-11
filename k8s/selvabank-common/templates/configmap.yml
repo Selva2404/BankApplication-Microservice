@@ -1,0 +1,16 @@
+{{- define "common.configmap" -}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.global.configMapName }}
+data:
+  SPRING_PROFILE_ACTIVE: {{ .Values.global.activeProfile }}
+  SPRING_CONFIG_IMPORT: {{ .Values.global.configServerURL }}
+  EUREKA_INSTANCE_CLIENT_SERVICE_URL_DEFAULTZONE: {{ .Values.global.eurekaServerURL }}
+  SPRING_SECURITY_OAUTH2_RESOURCE_SERVER_JWT_ISSUER_URI: {{ .Values.global.keyCloakURL }}
+  JAVA_TOOL_OPTIONS: {{ .Values.global.openTelemetryJavaAgent }}
+  OTEL_EXPORTER_OTLP_ENDPOINT: {{ .Values.global.otelExporterEndpoint }}
+  OTEL_LOGS_EXPORTER: {{ .Values.global.otelLogsExporter }}
+  SPRING_CLOUD_STREAM_RABBITMQ_BINDER_ADDRESSES: {{ .Values.global.rabbitmqURL }}
+{{- end -}}
+
