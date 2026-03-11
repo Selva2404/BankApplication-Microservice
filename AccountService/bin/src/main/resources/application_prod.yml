@@ -1,0 +1,17 @@
+spring:
+  config:
+    activate:
+      on-profile: "prod"
+
+build:
+  version: "1.0.1"
+
+service:
+  name: account-service-prod
+  details:
+    port: 8080
+    service-url: http://localhost:8080
+  db:
+    - jdbc:h2:mem:accountdbprod
+    - sa
+    - root

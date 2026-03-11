@@ -1,0 +1,26 @@
+spring:
+  application:
+    name=BankApp
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password: ""
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.H2Dialect
+
+
+build:
+  version: "1.0.0"
+
+service:
+  name: account-service-dev
+  details:
+    port: 8080
+    service-url: http://localhost:8080
+  db:
+    - jdbc:h2:mem:accountdbdev
+    - sa
+    - root

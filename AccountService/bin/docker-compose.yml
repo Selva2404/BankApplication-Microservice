@@ -1,0 +1,39 @@
+services:
+  account:
+    image: "selva2404/account:s1"
+    container_name: "account_ms"
+    ports:
+      - "8080:8080"
+    deploy:
+      resources:
+        limits:
+          memory: "1G"
+    networks:
+      - selva2404_network
+  loans:
+    image: "selva2404/loanservice:s1"
+    container_name: "loans_ms"
+    ports:
+      - "8100:8100"
+    deploy:
+      resources:
+        limits:
+          memory: "1G"
+    networks:
+      - selva2404_network
+
+  cards:
+    image: "selva2404/cardservice:s1"
+    container_name: "cards"
+    ports:
+      - "9000:9000"
+    deploy:
+      resources:
+        limits:
+          memory: "1G"
+    networks:
+      - selva2404_network
+networks:
+  selva2404_network:
+    driver: "bridge"
+

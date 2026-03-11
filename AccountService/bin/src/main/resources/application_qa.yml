@@ -1,0 +1,17 @@
+spring:
+  config:
+    activate:
+      on-profile: "qa"
+
+build:
+  version: "1.0.2"
+
+service:
+  name: account-service-qa
+  details:
+    port: 8080
+    service-url: http://localhost:8080
+  db:
+    - jdbc:h2:mem:accountdbqa
+    - sa
+    - root
