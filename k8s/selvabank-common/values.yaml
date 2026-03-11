@@ -1,0 +1,9 @@
+global:
+  activeProfile: default
+  configServerURL: "configserver:http://configserver:8000/"
+  eurekaServerURL: "http://eurekaserver:8500/eureka"
+  keyCloakURL: http://keycloak:7080/realms/master
+  openTelemetryJavaAgent:
+  otelExporterEndpoint:
+  otelLogsExporter:
+  rabbitmqURL: amqp://guest:guest@rabbitmq:5672/

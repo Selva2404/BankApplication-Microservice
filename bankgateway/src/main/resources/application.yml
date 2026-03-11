@@ -1,0 +1,67 @@
+
+server:
+  address: 0.0.0.0
+  port: 8300
+
+
+spring:
+  application:
+    name: "bankgateway"
+  config:
+   import: "configserver:http://localhost:8000/"
+  cloud:
+    gateway:
+      server:
+        webflux:
+          discovery:
+            locator:
+              lower-case-service-id: true
+              enabled: true
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+  security:
+    oauth2:
+      resource-server:
+        jwt:
+          issuer-uri: http://localhost:7080/realms/master
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    gateway:
+      access: unrestricted
+  info:
+    env:
+      enabled: true
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: "http://localhost:8500/eureka"
+
+logging:
+  level:
+    com:
+      gateway:
+        bankgateway: DEBUG
+
+
+resilience4j.circuitbreaker:
+  configs:
+    default:
+      sliding-window-size: 10
+      permitted-number-of-calls-in-half-open-state: 2
+      failure-rate-threshold: 50
+      wait-duration-in-open-state: 10000
+  instances:
+    AccountCircuitBeaker:
+      base-config: default
+
+

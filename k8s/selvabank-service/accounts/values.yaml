@@ -1,0 +1,27 @@
+
+deploymentName: account-service
+serviceName: accounts
+appLabel: accounts
+appName: accounts
+
+
+replicaCount: 1
+
+image:
+  repoName: selva2404/account
+  tag: s6
+
+containerPort: 8080
+
+service:
+  type: ClusterIP
+  port: 8080
+  targetPort: 8080
+
+appName_enable: true
+profile_enable: true
+config_enable: true
+eureka_enable: true
+keyCloak_enable: false
+otel_enable: true
+rabbitmq_enable: true

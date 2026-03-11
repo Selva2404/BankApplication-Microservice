@@ -1,0 +1,40 @@
+server:
+  port: 8500
+
+spring:
+ application:
+  name: "eurekaserver"
+ config:
+  import: "configserver:http://localhost:8000/"
+management:
+ endpoints:
+  web:
+   exposure:
+    include: "*"
+ health:
+  readiness-state:
+   enabled: true
+  liveness-state:
+   enabled: true
+ endpoint:
+  health:
+   probes:
+    enabled: true
+ info:
+  env:
+   enabled: true
+
+eureka:
+ instance:
+  prefer-ip-address: true
+ client:
+  fetch-registry: false
+  register-with-eureka: false
+  service-url:
+   defaultZone: "http://localhost:8500/eureka/"
+
+info:
+ app:
+  name: "eureka"
+  description: "eureka Application"
+  dcd version: "1.0.0"
